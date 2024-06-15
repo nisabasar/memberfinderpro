@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1e90ff;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background: white;
+            padding: 3rem;
+            border-radius: 35px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px; /* Kutu boyutunu artırdık */
+        }
+        h1 {
+            color: #1e90ff;
+            margin-bottom: 1.5rem;
+        }
+        input {
+            width: 90%;
+            padding: 0.60rem; /* Padding artırıldı */
+            margin: 0.75rem 0; /* Margin artırıldı */
+            border: 2px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            margin-top: 20px; /* Margin artırıldı */
+            width: 50%; /* Genişliği %50 yaparak butonu genişlettik */
+            padding: 0.75rem; /* Padding artırıldı */
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            font-size: 1rem; /* Font boyutu artırıldı */
+            justify-content: center;
+            text-align: center;
+        }
+        button:hover {
+            background-color: #1c86ee;
+        }
+        .error-message {
+            color: red;
+            margin-top: 0.75rem; /* Margin artırıldı */
+        }
+    </style>
+    <script>
+    window.onload = function() {
+        if (window.history && window.history.pushState) {
+            window.history.pushState('forward', null, './#forward');
+            window.onpopstate = function(event) {
+
+                history.pushState('forward', null, './#forward');
+
+
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
+            };
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('form').addEventListener('submit', function() {
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        });
+    });
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Giriş Yap</h1>
+        <form action="/" method="POST" autocomplete="off">
+            <input type="text" name="username" placeholder="Kullanıcı Adı" required>
+            <input type="password" name="password" placeholder="Şifre" required>
+             {% if error_message %}
+            <p class="error-message">{{ error_message }}</p>
+             {% endif %}
+            <button type="submit">Giriş Yap</button>
+        </form>
+    </div>
+</body>
+</html>
