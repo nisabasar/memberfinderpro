@@ -1,5 +1,4 @@
-[21:09, 15.06.2024] Nisa Nur Başar: .
-[21:09, 15.06.2024] Nisa Nur Başar: # MemberFinderPro
+# MemberFinderPro
 
 MemberFinderPro is a web application designed to search and scrape Facebook groups for members' information such as names and contact details.
 
