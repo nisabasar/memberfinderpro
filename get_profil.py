@@ -33,10 +33,9 @@ def ara_telefon_numarası(text):
 
 
 def extract_number_from_url(url):
-    # URL desenini belirliyoruz
+
     pattern = r'/(\d+)/$'
 
-    # Verilen deseni URL'de arıyoruz
     match = re.search(pattern, url)
 
     if match:

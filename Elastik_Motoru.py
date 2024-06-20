@@ -13,9 +13,9 @@ def elastik(liste_isim, keys):
     for l in liste_isim:
         # Eğer cins daha önce görülmediyse
         if l['link'] not in gorusen_cinsler:
-            # Cinsi set'e ekle
+
             gorusen_cinsler.add(l['link'])
-            # Öğeyi tekrarsız listeye ekle
+
             tekrarsiz_liste.append(l)
 
     translator = Translator()
