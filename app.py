@@ -86,14 +86,13 @@ def fscrap(Link, keys):
     chrome_options = Options()
     chrome_options.add_argument("--disable-notifications")
     chrome_options.add_argument('--no-sandbox')
-    chrome_options.add_argument("--log-level=3")  # 3 seviyesi sadece hataları gösterir
-    # chrome_options.add_argument("--headless")  # Headless modunu etkinleştirin
-    chrome_options.add_argument("--disable-gpu")  # GPU kullanımını devre dışı bırakın (bazı durumlarda gereklidir)
-    chrome_options.add_argument("--window-size=1920x1080")  # Pencere boyutunu ayarlayın
+    chrome_options.add_argument("--log-level=3")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--window-size=1920x1080")
     chrome_options.add_argument('--disable-extensions')
     prefs = {
         "profile.default_content_setting_values": {
-            "images": 2,  # Görselleri yüklemeyi engeller
+            "images": 2,
         }
     }
     chrome_options.add_experimental_option("prefs", prefs)
@@ -117,6 +116,7 @@ def fscrap(Link, keys):
     driver.get(Link)
     time.sleep(4)
 
+
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     group_name_tag = soup.find('a', {
         'class': 'x1i10hfl xjbqb8w x1ejq31n xd10rxx x1sy0etr x17r0tee x972fbf xcfux6l x1qhh985 xm0m39n x9f619 x1ypdohk xt0psk2 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x1heor9g x1sur9pj xkrqix3 x1xlr1w8'})
@@ -131,7 +131,6 @@ def fscrap(Link, keys):
 
     if sayı and float(sayı) > 6000:
         for key in keys:
-
             wait = WebDriverWait(driver, 20)
             input_element = wait.until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, "input[placeholder='Bir üyeyi bul']"))
@@ -208,20 +207,17 @@ def fscrap(Link, keys):
         driver.get(kisi['link'])
         for _ in range(3):
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(20)
-        time.sleep(10)
 
         try:
             while True:
-                daha_fazlasi_button = WebDriverWait(driver, 10).until(
+                daha_fazlasi_button = WebDriverWait(driver, 3).until(
                     EC.element_to_be_clickable((By.XPATH, "//div[contains(text(),'Daha fazlasını gör')]"))
                 )
-                driver.execute_script("arguments[0].scrollIntoView();", daha_fazlasi_button)
                 driver.execute_script("arguments[0].click();", daha_fazlasi_button)
-                time.sleep(20)
+
         except Exception as e:
-                print(f"Daha fazlasını gör butonuna tıklanırken hata: {e}")
-                pass
+            print(f"Daha fazlasını gör butonuna tıklanırken hata: {e}")
+            pass
 
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         page_text = soup.get_text()
