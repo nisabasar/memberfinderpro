@@ -208,8 +208,21 @@ def fscrap(Link, keys):
         driver.get(kisi['link'])
         for _ in range(3):
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(2)
-        time.sleep(1)
+            time.sleep(20)
+        time.sleep(10)
+
+        try:
+            while True:
+                daha_fazlasi_button = WebDriverWait(driver, 10).until(
+                    EC.element_to_be_clickable((By.XPATH, "//div[contains(text(),'Daha fazlasını gör')]"))
+                )
+                driver.execute_script("arguments[0].scrollIntoView();", daha_fazlasi_button)
+                driver.execute_script("arguments[0].click();", daha_fazlasi_button)
+                time.sleep(20)
+        except Exception as e:
+                print(f"Daha fazlasını gör butonuna tıklanırken hata: {e}")
+                pass
+
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         page_text = soup.get_text()
         page_text = temizle_metin(page_text)
