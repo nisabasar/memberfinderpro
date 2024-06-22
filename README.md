@@ -39,7 +39,7 @@ pip install -r requirements.txt
 
 3. Login with your credentials. (username:admin , password:F.user.41)
 
-4. Enter the Facebook group URL and search keywords to start scraping.
+4. Enter the Facebook group URL and search keywords (multiple keywords can be entered separated by commas, e.g., "electric, electronic, auto") to start scraping.
 
 5. View search results and download if necessary.
 
