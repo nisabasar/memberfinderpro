@@ -14,6 +14,7 @@ import string
 
 
 
+
 def temizle_metin(text):
     text = text.replace('Facebook', '')
     additional_chars = '·'
@@ -43,3 +44,12 @@ def extract_number_from_url(url):
         return match.group(1)
     else:
         return None
+
+
+
+
+
+
+
+
+
