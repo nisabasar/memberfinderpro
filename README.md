@@ -33,15 +33,17 @@ pip install -r requirements.txt
 
 ## Usage
 
-1. Run the Flask application: python app.py
+1. Update the login details in the code with your own Facebook username and password.
 
-2. Access the application at [http://localhost:5000](http://localhost:5000).
+2. Run the Flask application: python app.py
 
-3. Login with your credentials. (username:admin , password:F.user.41)
+3. Access the application at [http://localhost:5000](http://localhost:5000).
 
-4. Enter the Facebook group URL and search keywords (multiple keywords can be entered separated by commas, e.g., "electric, electronic, auto") to start scraping.
+4. Login with your credentials. (username:admin , password:F.user.41)
 
-5. View search results and download if necessary.
+5. Enter the Facebook group URL and search keywords (multiple keywords can be entered separated by commas, e.g., "electric, electronic, auto") to start scraping.
+
+6. View search results and download if necessary.
 
 ## Contributing
 
