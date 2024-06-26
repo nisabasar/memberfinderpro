@@ -35,8 +35,8 @@ def login():
     error_message = None
 
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+        username = request.form['username'] //enter your facebook username
+        password = request.form['password']  //enter your facebook password
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
         if username == USER_CREDENTIALS['username'] and hashed_password == USER_CREDENTIALS['password']:
